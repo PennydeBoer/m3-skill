@@ -4,31 +4,30 @@ using UnityEngine;
 
 public class Bit : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-    public bool state = false;
-    // Start is called before the first frame update
+    SpriteRenderer spriteRenderer; // Variabele om de sprite op te slaan
+
     void Start()
     {
+        // Haal de SpriteRenderer op en sla het op in de variabele
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.red;
     }
+    public bool state = false; // Houdt de status van de bit bij
 
-    // Update is called once per frame
     void Update()
-    {
-    }
-    private void OnMouseDown()
     {
         if (state)
         {
-            spriteRenderer.color = Color.red;
-            state = false;
+            // Zet de sprite kleur op groen als state true is
+            spriteRenderer.color = Color.green;
         }
         else
         {
-            state = true;
-            spriteRenderer.color = Color.green;
+            // Zet de sprite kleur op rood als state false is
+            spriteRenderer.color = Color.red;
         }
-
+    }
+    private void OnMouseUp()
+    {
+        state = !state; // Wissel tussen true en false
     }
 }
